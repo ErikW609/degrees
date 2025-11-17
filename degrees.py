@@ -118,7 +118,7 @@ def shortest_path(source, target):
             for n in neighbors_for_person(node.state):
                 frontier.add(Node(state=n[1],parent=node,action=n))
 
-        elif frontier == []:
+        elif frontier.empty():
             return None
 
 
