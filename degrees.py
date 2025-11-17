@@ -104,6 +104,7 @@ def shortest_path(source, target):
 
         node = frontier.remove()
 
+        # Checks to see if the goal has been reached and returns the path
         if node.state == target:
             actions = []
 
@@ -113,14 +114,15 @@ def shortest_path(source, target):
             actions.reverse()
             return actions
         
+        # Adds nodes to the frontier
         if node.state not in checked:
             checked.append(node.state)
-            for n in neighbors_for_person(node.state):
-                frontier.add(Node(state=n[1],parent=node,action=n))
+            for neighbors in neighbors_for_person(node.state):
+                frontier.add(Node(state=neighbors[1], parent=node, action=neighbors))
 
+        # Checks to see if there are no paths left
         elif frontier.empty():
             return None
-
 
 
 def person_id_for_name(name):
